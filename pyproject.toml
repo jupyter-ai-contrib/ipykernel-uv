@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ipykernel-uv"
-version = "0.1.0"
+dynamic = ["version"]
 description = "An IPython kernel that uses uv for package and environment management"
 readme = "README.md"
 license = "BSD-3-Clause"
@@ -14,5 +14,18 @@ dependencies = [
     "jupyterlab>=4.5.5",
 ]
 
+[project.urls]
+Homepage = "https://github.com/jupyter-ai-contrib/ipykernel-uv"
+Source = "https://github.com/jupyter-ai-contrib/ipykernel-uv"
+Tracker = "https://github.com/jupyter-ai-contrib/ipykernel-uv/issues"
+
+# Single source of truth for the version. `hatch version <spec>` (used by
+# jupyter-releaser) bumps the __version__ string in this file.
+[tool.hatch.version]
+path = "src/ipykernel_uv/__init__.py"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/ipykernel_uv"]
+
+[tool.jupyter-releaser.options]
+version_cmd = "hatch version"
