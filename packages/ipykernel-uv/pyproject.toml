@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ipykernel-uv"
+dynamic = ["version"]
+description = "An IPython kernel that uses uv for package and environment management"
+readme = "README.md"
+license = "BSD-3-Clause"
+requires-python = ">=3.10"
+dependencies = [
+    "ipykernel-env-core",
+    "jupyterlab>=4.5.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/jupyter-ai-contrib/ipykernel-env"
+Source = "https://github.com/jupyter-ai-contrib/ipykernel-env"
+Tracker = "https://github.com/jupyter-ai-contrib/ipykernel-env/issues"
+
+[tool.hatch.version]
+path = "src/ipykernel_uv/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ipykernel_uv"]
+
+[tool.uv.sources]
+ipykernel-env-core = { workspace = true }
